@@ -260,6 +260,14 @@
     public func sendResumeAssistantMessage(message: ResumeAssistantMessage) async throws {
       try await socket?.resumeAssistant(message: message)
     }
+
+    public func sendToolResponse(message: ToolResponseMessage) async throws {
+      try await socket?.sendToolResponse(message: message)
+    }
+
+    public func sendToolError(message: ToolErrorMessage) async throws {
+      try await socket?.sendToolError(message: message)
+    }
   }
 
   // MARK: - Event Handling

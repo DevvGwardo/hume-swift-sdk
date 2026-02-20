@@ -80,6 +80,20 @@ public class StreamSocket {
     try await send(UserInput(text: text))
   }
 
+  /**
+     Send a tool response message back to EVI after processing a tool call.
+     */
+  public func sendToolResponse(message: ToolResponseMessage) async throws {
+    try await send(message)
+  }
+
+  /**
+     Send a tool error message back to EVI when a tool call fails.
+     */
+  public func sendToolError(message: ToolErrorMessage) async throws {
+    try await send(message)
+  }
+
   private func receiveSingleMessage() async throws -> SubscribeEvent {
     switch try await webSocketTask.receive() {
     case .data:
